@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.1.3] - 2021-09-14
+
+### Changed
+
+- Update the README and fix tests to reflect that `Precision: "underflow"` may indicate rounding to the smallest signed subnormal value in addition to signed zero.
+
 ## [0.1.2] - 2021-09-14
 
 ### Changed
@@ -29,7 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Initial implementation and tests!
 - This changelog!
 
-[unreleased]: https://github.com/joeltg/big-varint/compare/v0.1.2...HEAD
+[unreleased]: https://github.com/joeltg/big-varint/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/joeltg/big-varint/compare/v0.1.3
 [0.1.2]: https://github.com/joeltg/big-varint/compare/v0.1.2
 [0.1.1]: https://github.com/joeltg/big-varint/compare/v0.1.1
 [0.1.0]: https://github.com/joeltg/big-varint/compare/v0.1.0
