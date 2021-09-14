@@ -31,7 +31,7 @@ export function setFloat16(view: DataView, offset: number, value: number) {
 	const e = exponentValue + float16Emax
 
 	if (float16Emax < exponentValue) {
-		// round to +/- Infinity
+		// overflow to +/- Infinity
 		return view.setUint16(offset, (sign >>> 16) | 0x7c00)
 	}
 

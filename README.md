@@ -60,7 +60,7 @@ declare function getFloat16Precision(value: number): Precision
 
 - `exact`: Conversion will not loose precision. The value is guaranteed to round-trip back to the same `number` value. Positive and negative zero, positive and negative infinity, and `NaN` all return `exact`. **Values that can be represented losslessly as a subnormal value in the target format will return `exact`.**
 - `overflow`: the exponent of the given value is greater than the maximum exponent of the target size (`127` for float32 or `15` for float16). Conversion is guaranteed to overflow to +/- Infinity.
-- `underflow`: the exponent of the given value is less than the minimum exponent _minus the number of fractional bits_ of the target size (`-126 - 23` for float32 or `-14 - 10` for float16). Conversion is guaranteed to underflow to +/- 0.
+- `underflow`: the exponent of the given value is less than the minimum exponent _minus the number of fractional bits_ of the target size (`-126 - 23` for float32 or `-14 - 10` for float16). Conversion is guaranteed to underflow to +/- 0 **or** to the smallest signed subnormal value (`+/- 2^-24` for float16 or `+/- 2^-149` for float32).
 - `inexact`: the exponent is within the target range, but precision bits will be lost during rounding. The value may round to +/- 0 but will never round to +/- Infinity.
 
 Note that the boundaries for overflow and underflow are not what you might necessarily expect; this is because values with exponents just under the minimum exponent for a format map to subnormal values.

@@ -18,7 +18,7 @@ export const float32Emin = -126
 export function format32(value: number): string {
 	const a = value >>> 16
 	const b = value & 0x0000ffff
-	const b16 = a.toString(16).padStart(6, "0") + b.toString(16).padStart(6, "0")
+	const b16 = a.toString(16).padStart(4, "0") + b.toString(16).padStart(4, "0")
 	const b02 = a.toString(2).padStart(16, "0") + b.toString(2).padStart(16, "0")
 	return `0x${b16} | ${b02[0]} ${b02.slice(1, 9)} ${b02.slice(9)}`
 }

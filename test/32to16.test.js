@@ -295,11 +295,16 @@ test("check precision matches round-trip results", (t) => {
 		} else if (precision === "overflow") {
 			t.is(f16, f32 > 0 ? Infinity : -Infinity)
 		} else if (precision === "underflow") {
-			t.true(f16 === 0, `(${format32(i32)}) -> ${f16} not zero`)
-			t.true(
-				1 / f16 === (f32 > 0 ? Infinity : -Infinity),
-				`(${format32(i32)}) -> ${f16} not signed zero`
-			)
+			// underflow might round to 0x0000 (0), 0x8000 (-0),
+			// 0x0001 (smallest positive subnormal), or 0x8001 (smalleset negative subnormal)
+			const i = float16View.getUint16(0)
+			if (i === 0x0000 || i === 0x8000) {
+				t.pass("underflow to +/- zero")
+			} else if (i === 0x0001 || i === 0x8001) {
+				t.pass("underflow to smallest subnormal")
+			} else {
+				t.fail(`${f32} -> (${format32(i32)}) -> ${f16} did not underflow`)
+			}
 		} else {
 			t.fail(`invalid precision result: ${precision}`)
 		}

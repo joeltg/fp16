@@ -8,7 +8,7 @@ const v = new DataView(b)
 test("NaN", (t) => {
 	setFloat16(v, 0, NaN)
 
-	t.true(isNaN(getFloat16(v, 0)))
+	t.is(getFloat16(v, 0), NaN)
 	t.is(v.getUint16(0), 0x7e00)
 })
 
@@ -90,7 +90,6 @@ test("positive zero", (t) => {
 
 	const f = getFloat16(v, 0)
 	t.is(f, 0)
-	t.is(1 / f, Infinity)
 	t.is(v.getUint16(0), 0x0000)
 })
 
@@ -99,7 +98,6 @@ test("negative zero", (t) => {
 
 	const f = getFloat16(v, 0)
 	t.is(f, -0)
-	t.is(1 / f, -Infinity)
 	t.is(v.getUint16(0), 0x8000)
 })
 
