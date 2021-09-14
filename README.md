@@ -25,10 +25,10 @@ This library is TypeScript-native, ESM-only, and has zero dependencies. It works
 npm i fp16
 ```
 
-You can also use `fp16` with Deno.
+Or in [Deno](https://deno.land/):
 
 ```typescript
-import { setFloat16, getFloat16 } from "https://deno.land/x/fp16/index.ts"
+import { setFloat16, getFloat16 } from "https://deno.land/x/fp16/lib/index.js"
 
 // ...
 ```
