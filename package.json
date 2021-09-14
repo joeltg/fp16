@@ -1,0 +1,32 @@
+{
+	"name": "fp16",
+	"version": "0.0.1",
+	"type": "module",
+	"types": "lib/index.d.ts",
+	"files": [
+		"lib"
+	],
+	"description": "Half-precision 16-bit floating point numbers",
+	"main": "lib/index.js",
+	"scripts": {
+		"test": "ava",
+		"build": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/joeltg/fp16.git"
+	},
+	"keywords": [
+		"float16"
+	],
+	"author": "Joel Gustafson",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/joeltg/fp16/issues"
+	},
+	"homepage": "https://github.com/joeltg/fp16#readme",
+	"devDependencies": {
+		"ava": "^4.0.0-alpha.2",
+		"typescript": "^4.4.3"
+	}
+}
