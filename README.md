@@ -8,7 +8,7 @@ Half-precision 16-bit floating point numbers.
 
 `NaN` is always encoded as `0x7e00`, which extends the pattern of how browsers serialize `NaN` in 32 bits and is the recommendation [in the CBOR spec](https://www.rfc-editor.org/rfc/rfc8949.html#name-deterministically-encoded-c).
 
-This library is TypeScript-native, ESM-only, and has zero dependencies. It works in Node, the browser, and Deno.
+This library is TypeScript-native, ESM-only, and has zero dependencies. It works in Node and the browser.
 
 ## Table of Contents
 
@@ -23,14 +23,6 @@ This library is TypeScript-native, ESM-only, and has zero dependencies. It works
 
 ```
 npm i fp16
-```
-
-Or in [Deno](https://deno.land/):
-
-```typescript
-import { setFloat16, getFloat16 } from "https://deno.land/x/fp16/lib/index.js"
-
-// ...
 ```
 
 ## Usage
