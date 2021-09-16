@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Use `Object.is` to test for `-0` instead of dividing by `Infinity`
+
 ## [0.1.3] - 2021-09-14
 
 ### Changed

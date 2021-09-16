@@ -13,12 +13,10 @@ export function setFloat16(view: DataView, offset: number, value: number) {
 		return view.setUint16(offset, 0x7c00)
 	} else if (value === -Infinity) {
 		return view.setUint16(offset, 0xfc00)
-	} else if (value === 0) {
-		if (1 / value === Infinity) {
-			return view.setUint16(offset, 0)
-		} else {
-			return view.setUint16(offset, 0x8000)
-		}
+	} else if (Object.is(value, 0)) {
+		return view.setUint16(offset, 0)
+	} else if (Object.is(value, -0)) {
+		return view.setUint16(offset, 0x8000)
 	}
 
 	float32View.setFloat32(0, value)
