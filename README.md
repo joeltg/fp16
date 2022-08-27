@@ -52,16 +52,23 @@ declare function getFloat16(view: DataView, offset: number): number
 In addition to methods for getting and setting float16s, `fp16` exports two methods for testing how a given `number` value will convert to 32-bit and 16-bit values.
 
 ```typescript
-type Precision = "exact" | "overflow" | "underflow" | "inexact"
+export const Precision = {
+	Exact: 0,
+	Inexact: 1,
+	Underflow: 2,
+	Overflow: 3,
+} as const
+
+export type Precision = typeof Precision[keyof typeof Precision]
 
 declare function getFloat32Precision(value: number): Precision
 declare function getFloat16Precision(value: number): Precision
 ```
 
-- `exact`: Conversion will not loose precision. The value is guaranteed to round-trip back to the same `number` value. Positive and negative zero, positive and negative infinity, and `NaN` all return `exact`. **Values that can be represented losslessly as a subnormal value in the target format will return `exact`.**
-- `overflow`: the exponent of the given value is greater than the maximum exponent of the target size (`127` for float32 or `15` for float16). Conversion is guaranteed to overflow to +/- Infinity.
-- `underflow`: the exponent of the given value is less than the minimum exponent _minus the number of fractional bits_ of the target size (`-126 - 23` for float32 or `-14 - 10` for float16). Conversion is guaranteed to underflow to +/- 0 **or** to the smallest signed subnormal value (`+/- 2^-24` for float16 or `+/- 2^-149` for float32).
-- `inexact`: the exponent is within the target range, but precision bits will be lost during rounding. The value may round to +/- 0 but will never round to +/- Infinity.
+- `Precision.Exact`: Conversion will not loose precision. The value is guaranteed to round-trip back to the same `number` value. Positive and negative zero, positive and negative infinity, and `NaN` all return `exact`. **Values that can be represented losslessly as a subnormal value in the target format will return `exact`.**
+- `Precision.Overflow`: the exponent of the given value is greater than the maximum exponent of the target size (`127` for float32 or `15` for float16). Conversion is guaranteed to overflow to +/- Infinity.
+- `Precision.Underflow`: the exponent of the given value is less than the minimum exponent _minus the number of fractional bits_ of the target size (`-126 - 23` for float32 or `-14 - 10` for float16). Conversion is guaranteed to underflow to +/- 0 **or** to the smallest signed subnormal value (`+/- 2^-24` for float16 or `+/- 2^-149` for float32).
+- `Precision.Inexact`: the exponent is within the target range, but precision bits will be lost during rounding. The value may round to +/- 0 but will never round to +/- Infinity.
 
 Note that the boundaries for overflow and underflow are not what you might necessarily expect; this is because values with exponents just under the minimum exponent for a format map to subnormal values.
 
