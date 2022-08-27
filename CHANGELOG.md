@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-08-27
+
 ### Changed
 
+- Switch precision values to integer enums instead of string constants
 - Upgrade ava to 4.0.0
 
 ## [0.1.4] - 2021-09-14
