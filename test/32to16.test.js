@@ -4,6 +4,7 @@ import {
 	setFloat16,
 	getFloat16,
 	format32,
+	Precision,
 } from "../lib/index.js"
 
 // Copied from https://github.com/x448/float16/blob/master/float16_test.go
@@ -288,13 +289,13 @@ test("check precision matches round-trip results", (t) => {
 
 		const precision = getFloat16Precision(f32)
 
-		if (precision === "exact") {
+		if (precision === Precision.Exact) {
 			t.is(f32, f16)
-		} else if (precision === "inexact") {
+		} else if (precision === Precision.Inexact) {
 			t.not(f32, f16)
-		} else if (precision === "overflow") {
+		} else if (precision === Precision.Overflow) {
 			t.is(f16, f32 > 0 ? Infinity : -Infinity)
-		} else if (precision === "underflow") {
+		} else if (precision === Precision.Underflow) {
 			// underflow might round to 0x0000 (0), 0x8000 (-0),
 			// 0x0001 (smallest positive subnormal), or 0x8001 (smalleset negative subnormal)
 			const i = float16View.getUint16(0)

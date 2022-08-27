@@ -10,7 +10,14 @@ import {
 const float64Buffer = new ArrayBuffer(8)
 const float64View = new DataView(float64Buffer)
 
-export type Precision = "exact" | "inexact" | "underflow" | "overflow"
+export const Precision = {
+	Exact: 0,
+	Inexact: 1,
+	Underflow: 2,
+	Overflow: 3,
+} as const
+
+export type Precision = typeof Precision[keyof typeof Precision]
 
 /**
  *
@@ -19,9 +26,9 @@ export type Precision = "exact" | "inexact" | "underflow" | "overflow"
  */
 export function getFloat16Precision(value: number): Precision {
 	if (isNaN(value) || value === 0) {
-		return "exact"
+		return Precision.Exact
 	} else if (value === Infinity || value === -Infinity) {
-		return "exact"
+		return Precision.Exact
 	}
 
 	float64View.setFloat64(0, value)
@@ -31,25 +38,25 @@ export function getFloat16Precision(value: number): Precision {
 	const exponentValue = (exponent >>> 20) - 1023
 
 	if (float16Emax < exponentValue) {
-		return "overflow"
+		return Precision.Overflow
 	} else if (exponentValue < float16Emin - float16Precision) {
-		return "underflow"
+		return Precision.Underflow
 	}
 
 	const significantBits = getSignificantBits(a & 0x000fffff, b)
 	if (float16Precision < significantBits) {
-		return "inexact"
+		return Precision.Inexact
 	}
 
 	if (exponentValue < float16Emin) {
 		if (float16Emin - exponentValue <= float16Precision - significantBits) {
 			// in this case the value can be encoded losslessly as a subnormal number
-			return "exact"
+			return Precision.Exact
 		} else {
-			return "inexact"
+			return Precision.Inexact
 		}
 	} else {
-		return "exact"
+		return Precision.Exact
 	}
 }
 
@@ -60,9 +67,9 @@ export function getFloat16Precision(value: number): Precision {
  */
 export function getFloat32Precision(value: number): Precision {
 	if (isNaN(value) || value === 0) {
-		return "exact"
+		return Precision.Exact
 	} else if (value === Infinity || value === -Infinity) {
-		return "exact"
+		return Precision.Exact
 	}
 
 	float64View.setFloat64(0, value)
@@ -72,25 +79,25 @@ export function getFloat32Precision(value: number): Precision {
 	const exponentValue = (exponent >>> 20) - 1023
 
 	if (float32Emax < exponentValue) {
-		return "overflow"
+		return Precision.Overflow
 	} else if (exponentValue < float32Emin - float32Precision) {
-		return "underflow"
+		return Precision.Underflow
 	}
 
 	const significantBits = getSignificantBits(a & 0x000fffff, b)
 	if (float32Precision < significantBits) {
-		return "inexact"
+		return Precision.Inexact
 	}
 
 	if (exponentValue < float32Emin) {
 		if (float32Emin - exponentValue <= float32Precision - significantBits) {
 			// in this case the value can be encoded losslessly as a subnormal number
-			return "exact"
+			return Precision.Exact
 		} else {
-			return "inexact"
+			return Precision.Inexact
 		}
 	} else {
-		return "exact"
+		return Precision.Exact
 	}
 }
 
