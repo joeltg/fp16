@@ -25,26 +25,27 @@ This library is TypeScript-native, ESM-only, and has zero dependencies. It works
 npm i fp16
 ```
 
-Or in Deno:
-
-```typescript
-import { setFloat16, getFloat16 } from "https://cdn.skypack.dev/fp16"
-
-// ...
-```
-
 ## Usage
 
 ### Set a 16-bit float
 
 ```typescript
-declare function setFloat16(view: DataView, offset: number, value: number): void
+declare function setFloat16(
+  view: DataView,
+  offset: number,
+  value: number,
+  littleEndian?: boolean,
+): void
 ```
 
 ### Get a 16-bit float
 
 ```typescript
-declare function getFloat16(view: DataView, offset: number): number
+declare function getFloat16(
+  view: DataView,
+  offset: number,
+  littleEndian?: boolean,
+): number
 ```
 
 ### Precision
