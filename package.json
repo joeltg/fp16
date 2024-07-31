@@ -1,32 +1,33 @@
 {
-	"name": "fp16",
-	"version": "0.2.0",
-	"type": "module",
-	"types": "lib/index.d.ts",
-	"files": [
-		"lib"
-	],
-	"description": "Half-precision 16-bit floating point numbers",
-	"main": "lib/index.js",
-	"scripts": {
-		"test": "ava",
-		"build": "tsc"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/joeltg/fp16.git"
-	},
-	"keywords": [
-		"float16"
-	],
-	"author": "Joel Gustafson",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/joeltg/fp16/issues"
-	},
-	"homepage": "https://github.com/joeltg/fp16#readme",
-	"devDependencies": {
-		"ava": "^4.0.0",
-		"typescript": "^4.4.3"
-	}
+  "name": "fp16",
+  "version": "0.2.0",
+  "type": "module",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "description": "Half-precision 16-bit floating point numbers",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ava",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeltg/fp16.git"
+  },
+  "keywords": [
+    "float16"
+  ],
+  "author": "Joel Gustafson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeltg/fp16/issues"
+  },
+  "homepage": "https://github.com/joeltg/fp16#readme",
+  "devDependencies": {
+    "ava": "^6.1.3",
+    "typescript": "^4.4.3"
+  }
 }
