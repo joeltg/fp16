@@ -1,6 +1,6 @@
 # fp16
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![license](https://img.shields.io/github/license/joeltg/fp16)](https://opensource.org/licenses/MIT) [![NPM version](https://img.shields.io/npm/v/fp16)](https://www.npmjs.com/package/fp16) ![TypeScript types](https://img.shields.io/npm/types/fp16) ![lines of code](https://img.shields.io/tokei/lines/github/joeltg/fp16)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![license](https://img.shields.io/github/license/joeltg/fp16)](https://opensource.org/licenses/MIT) [![NPM version](https://img.shields.io/npm/v/fp16)](https://www.npmjs.com/package/fp16) ![TypeScript types](https://img.shields.io/npm/types/fp16)
 
 Half-precision 16-bit floating point numbers.
 
