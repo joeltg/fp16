@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-07-31
+
+### Changed
+
+- Added optional `littleEndian?: boolean` argument to `setFloat16` and `getFloat16` to match the DataView interface
+
+### Added
+
+- Created `.pretterrc.json` prettier config
+
 ## [0.2.0] - 2022-08-27
 
 ### Changed
@@ -48,8 +58,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Initial implementation and tests!
 - This changelog!
 
-[unreleased]: https://github.com/joeltg/big-varint/compare/v0.1.3...HEAD
-[0.1.3]: https://github.com/joeltg/big-varint/compare/v0.1.3
-[0.1.2]: https://github.com/joeltg/big-varint/compare/v0.1.2
-[0.1.1]: https://github.com/joeltg/big-varint/compare/v0.1.1
-[0.1.0]: https://github.com/joeltg/big-varint/compare/v0.1.0
+[unreleased]: https://github.com/joeltg/fp16/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/joeltg/fp16/releases/tag/v0.3.0
+[0.2.0]: https://github.com/joeltg/fp16/releases/tag/v0.2.0
+[0.1.4]: https://github.com/joeltg/fp16/releases/tag/v0.1.4
+[0.1.3]: https://github.com/joeltg/fp16/releases/tag/v0.1.3
+[0.1.2]: https://github.com/joeltg/fp16/releases/tag/v0.1.2
+[0.1.1]: https://github.com/joeltg/fp16/releases/tag/v0.1.1
+[0.1.0]: https://github.com/joeltg/fp16/releases/tag/v0.1.0
