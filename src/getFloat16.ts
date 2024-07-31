@@ -1,7 +1,11 @@
 import { float32View } from "./utils.js"
 
-export function getFloat16(view: DataView, offset: number): number {
-	const value = view.getUint16(offset)
+export function getFloat16(
+	view: DataView,
+	offset: number,
+	littleEndian?: boolean,
+): number {
+	const value = view.getUint16(offset, littleEndian)
 	const sign = value & 0x8000
 	const exponent = value & 0x7c00
 	const mantissa = value & 0x03ff
@@ -16,8 +20,9 @@ export function getFloat16(view: DataView, offset: number): number {
 				m <<= 1
 			}
 			m &= ~0x400
-			float32View.setInt32(0, (sign << 16) | (e << 23) | (m << 13))
-			return float32View.getFloat32(0)
+			const i = (sign << 16) | (e << 23) | (m << 13)
+			float32View.setInt32(0, i, littleEndian)
+			return float32View.getFloat32(0, littleEndian)
 		}
 	} else if (exponent === 0x7c00) {
 		if (mantissa === 0) {
@@ -29,7 +34,7 @@ export function getFloat16(view: DataView, offset: number): number {
 		const e = (exponent + 0x01c000) << 13
 		const m = mantissa << 13
 		const i = (sign << 16) | e | m
-		float32View.setInt32(0, i)
-		return float32View.getFloat32(0)
+		float32View.setInt32(0, i, littleEndian)
+		return float32View.getFloat32(0, littleEndian)
 	}
 }

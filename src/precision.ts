@@ -17,7 +17,7 @@ export const Precision = {
 	Overflow: 3,
 } as const
 
-export type Precision = typeof Precision[keyof typeof Precision]
+export type Precision = (typeof Precision)[keyof typeof Precision]
 
 /**
  *
