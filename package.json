@@ -1,33 +1,38 @@
 {
-  "name": "fp16",
-  "version": "0.3.0",
-  "type": "module",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
-  "description": "Half-precision 16-bit floating point numbers",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "ava",
-    "build": "tsc",
-    "dev": "tsc --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/joeltg/fp16.git"
-  },
-  "keywords": [
-    "float16"
-  ],
-  "author": "Joel Gustafson",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/joeltg/fp16/issues"
-  },
-  "homepage": "https://github.com/joeltg/fp16#readme",
-  "devDependencies": {
-    "ava": "^6.1.3",
-    "typescript": "^4.4.3"
-  }
+	"name": "fp16",
+	"version": "0.3.0",
+	"type": "module",
+	"files": [
+		"lib"
+	],
+	"description": "Half-precision 16-bit floating point numbers",
+	"main": "lib/index.js",
+	"types": "./lib/index.d.ts",
+	"exports": {
+		".": "./lib/index.js"
+	},
+	"scripts": {
+		"dev": "tsc --build tsconfig.json test/tsconfig.json --watch",
+		"build": "tsc --build tsconfig.json test/tsconfig.json",
+		"clean": "tsc --build tsconfig.json test/tsconfig.json --clean",
+		"test": "ava"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/joeltg/fp16.git"
+	},
+	"keywords": [
+		"float16"
+	],
+	"author": "Joel Gustafson",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/joeltg/fp16/issues"
+	},
+	"homepage": "https://github.com/joeltg/fp16#readme",
+	"devDependencies": {
+		"@ava/typescript": "^5.0.0",
+		"ava": "^6.2.0",
+		"typescript": "^5.6.0"
+	}
 }

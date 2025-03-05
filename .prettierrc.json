@@ -1,6 +1,7 @@
 {
 	"useTabs": true,
 	"semi": false,
+	"printWidth": 120,
 	"trailingComma": "all",
 	"overrides": [
 		{
